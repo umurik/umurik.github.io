@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTrackedLinks();
   initContactWidget();
   initCookieBanner();
+  initGalleries();
 });
 
 function initHeaderScroll() {
@@ -29,9 +30,14 @@ function initBurgerMenu() {
   const burger = document.getElementById("burger");
   const nav = document.getElementById("nav");
   if (!burger || !nav) return;
-  burger.addEventListener("click", () => nav.classList.toggle("is-open"));
+  const setOpen = (open) => {
+    nav.classList.toggle("is-open", open);
+    burger.classList.toggle("is-active", open);
+    burger.setAttribute("aria-expanded", String(open));
+  };
+  burger.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
   nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => nav.classList.remove("is-open"));
+    link.addEventListener("click", () => setOpen(false));
   });
 }
 
@@ -207,5 +213,31 @@ function initCookieBanner() {
       localStorage.setItem("cookieAccepted", "1");
     } catch (e) {}
     banner.hidden = true;
+  });
+}
+
+function initGalleries() {
+  document.querySelectorAll("[data-gallery]").forEach((gallery) => {
+    const track = gallery.querySelector(".gallery__track");
+    const prev = gallery.querySelector(".gallery__btn--prev");
+    const next = gallery.querySelector(".gallery__btn--next");
+    const counter = gallery.querySelector(".gallery__counter");
+    const total = track.children.length;
+    if (total < 2) { [prev, next, counter].forEach((el) => el && el.remove()); return; }
+    if (!prev || !next) return;
+
+    const current = () => Math.round(track.scrollLeft / track.clientWidth);
+    const update = () => {
+      const i = current();
+      counter.textContent = `${i + 1} / ${total}`;
+      prev.disabled = i === 0;
+      next.disabled = i === total - 1;
+    };
+    const go = (step) => track.scrollTo({ left: (current() + step) * track.clientWidth });
+
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+    track.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+    update();
   });
 }

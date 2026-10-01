@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/portfolio/wa_new/
+Disallow: /assets/portfolio/vk_all/
+Disallow: /assets/portfolio/backup_placeholders/
