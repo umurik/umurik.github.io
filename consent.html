@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Согласие на обработку персональных данных — ПроффиРемонт</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="stylesheet" href="css/fonts.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=17">
+</head>
+<body class="legal-page">
+
+<header class="legal-header">
+  <div class="container legal-header__inner">
+    <a href="index.html" class="logo"><img class="logo__mark" src="assets/logo-mark-light.webp" alt="" width="66" height="44"><span class="logo__text">Проффи<span class="logo__accent">Ремонт</span></span></a>
+    <a href="index.html#cta-form" class="legal-back js-back">← Вернуться на сайт</a>
+  </div>
+</header>
+
+<main class="container legal">
+  <h1>Согласие на обработку персональных данных</h1>
+  <p class="legal__date">Редакция от 26 сентября 2026 г.</p>
+
+  <p>Отмечая галочку в форме заявки на сайте «ПроффиРемонт» и нажимая кнопку отправки, я свободно, своей волей и в своём интересе даю согласие на обработку моих персональных данных на следующих условиях.</p>
+
+  <h2>Оператор</h2>
+  <p>Богданов Константин, <span class="legal__todo">[статус: ИП / самозанятый — уточнить]</span>, ИНН <span class="legal__todo">[указать]</span>, г. Красноярск, тел. <a href="tel:+79029407919">+7 (902) 940-79-19</a>, email <a href="mailto:407919@mail.ru">407919@mail.ru</a>.</p>
+
+  <h2>Какие данные</h2>
+  <p>Имя, номер телефона, а также метки рекламных кампаний (UTM), с которыми я перешёл на сайт.</p>
+
+  <h2>Цели</h2>
+  <p>Обработка моей заявки, обратный звонок, консультация по ремонту, подготовка сметы и заключение договора.</p>
+
+  <h2>Действия с данными</h2>
+  <p>Сбор, запись, систематизация, накопление, хранение, уточнение, использование, удаление и уничтожение — с использованием средств автоматизации и без них.</p>
+
+  <h2>Передача данных</h2>
+  <p>Я согласен(на), что для доставки заявки Оператору мои имя и телефон направляются на его электронную почту в сервисе Mail.ru (ООО «ВК»). Трансграничная передача данных не осуществляется. Иным третьим лицам данные не передаются, кроме случаев, предусмотренных законом.</p>
+
+  <h2>Срок действия и отзыв</h2>
+  <p>Согласие действует до достижения целей обработки, но не более 3 лет, либо до его отзыва. Я могу отозвать согласие в любой момент, направив обращение Оператору по телефону или email, указанным выше. После отзыва Оператор прекращает обработку и удаляет данные в срок, установленный законом.</p>
+
+  <p>Порядок обработки данных подробно описан в <a href="policy.html">Политике конфиденциальности</a>.</p>
+</main>
+
+
+<script>
+  document.querySelectorAll('.js-back').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var ref = document.referrer ? new URL(document.referrer) : null;
+      if (ref && ref.origin === location.origin && (ref.pathname.endsWith('/') || ref.pathname.endsWith('/index.html'))) {
+        e.preventDefault();
+        history.back();
+      }
+    });
+  });
+</script>
+</body>
+</html>
